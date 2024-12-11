@@ -37,11 +37,10 @@
                 </h3>
                 <p class="py-4">
                 "Dream big, but start small. Your goals are just a series of small tasks waiting to be conquered. Every
-                checkbox you tick is a step closer to achieving greatness! Remember, progress—no matter how small—is
+               task you complete is a step closer to achieving greatness! Remember, progress—no matter how small—is
                 still progress. So tackle your to-dos today, and let the satisfaction of completing them fuel your
                 journey to success!"
                 </p>
-
             </div>
         </div>
     </div>

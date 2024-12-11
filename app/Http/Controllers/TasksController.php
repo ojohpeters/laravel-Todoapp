@@ -32,7 +32,7 @@ class TasksController extends Controller
         }
 
         // Use the authenticated user to create the task
-        $user = auth()->user(); // Get the currently authenticated user
+        $user = auth()->user(); // Get the currently authenticated user`
         $user->todoapps()->create($validatedRequest);
 
         return redirect()->route('user.tasks')->with('success', 'Task created successfully');
@@ -94,4 +94,20 @@ class TasksController extends Controller
        }
         
     }
+
+    public function searchtask(Request $request)
+    {
+        $search = $request->validate([
+            'search' => 'required|string|min:3', 
+        ]);
+        $tasks = auth()->user()->todoapps()->where(function($query) use ($search) {
+                        $query->where('tasks', 'like', '%' . $search['search'] . '%')
+                              ->orWhere('description', 'like', '%' . $search['search'] . '%');
+                    })
+                    ->get();
+    
+        return view('tasks.search', ['tasks' => $tasks, 'search' => $search['search']]);
+    }
+    
+    
 }

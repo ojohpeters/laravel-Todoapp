@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/edittask', [TasksController::class, 'edittaskform'])->name('edittask');
     Route::post('/makeedit', [TasksController::class, 'makeedit'])->name('makeedit');
     Route::post('/deletetask', [TasksController::class, 'deletetask'])->name('deletetask');
+    Route::post('/search', [TasksController::class, 'searchtask'])->name('searchtask');
 });
 
 

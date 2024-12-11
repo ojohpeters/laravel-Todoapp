@@ -28,11 +28,18 @@
                 <!-- Search & Hamburger Menu -->
                 <div class="flex md:order-2">
                     <!-- Search for Larger Screens -->
+                    @auth
                     <div class="relative hidden md:block">
-                        <input type="text" id="search-tasks" aria-label="Search tasks"
+                        <form action="{{route('searchtask')}}" method="POST">
+                            @csrf
+                             <input type="text" id="search-tasks" aria-label="Search tasks"
                             class="block w-full p-2 ps-10 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                            placeholder="Search tasks...">
+                            placeholder="Search tasks..." name="search">
+                            <button type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-16 sm:w-16  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                        </form>                       
                     </div>
+                    @endauth
                     <!-- Hamburger Menu -->
                     <button data-collapse-toggle="navbar-search" type="button"
                         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:hover:bg-gray-700"
