@@ -1,5 +1,21 @@
 
 <x-base title="Tasks">
+    @if($tasks->isEmpty())
+    <div
+    class="bg-white shadow-xl shadow-slate-900 mt-5 overflow-hidden sm:rounded-md max-w-lg mx-auto mb-3 transform  rounded-xl h-max w-full transition duration-300 hover:scale-105">
+    <div class="px-4 py-5  sm:px-6">
+        <div class="block items-center">
+            <h3 class=" text-center text-lg leading-6 font-medium text-red-600 ">
+              Empty Task
+            </h3>
+            <p class="py-4 text-4xl text-red-500">
+            No task found
+            </p>
+        </div>
+    </div>
+</div>
+@endif
+
     @foreach($tasks as $task) 
     <ul class="bg-white shadow-xl shadow-slate-900 mt-5 overflow-hidden sm:rounded-md max-w-sm mx-auto mb-3">
         <li>

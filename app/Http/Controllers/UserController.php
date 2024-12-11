@@ -37,7 +37,7 @@ class UserController extends Controller
 
         Auth::attempt($request->only('email', 'password'));
 
-        return redirect()->route('user.tasks');
+        return redirect()->route('home');
     
     }
     public function login(Request $request){
@@ -49,7 +49,7 @@ class UserController extends Controller
         ); 
        
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('user.tasks');
+            return redirect()->route('home');
            }
           else{
             return back()->withErrors([

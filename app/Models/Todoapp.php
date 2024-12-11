@@ -12,6 +12,13 @@ class Todoapp extends Model
         'id',
         'description',
         'photo',
-        'completed'
+        'completed',
+        'user_id',
     ];
+    
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

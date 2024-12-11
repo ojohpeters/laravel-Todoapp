@@ -56,6 +56,9 @@
                         aria-describedby="file_input_help" id="file_input" type="file" name="photo" value="/home/0xz3r0/Pictures/MOIMOI.jpg">
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX.
                         800x400px).</p>
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300 ">
+                            You can leave the photo input field if you don't want to update the picture
+                        </p>
                         @error('photo')
                         <div class="text-red-500"> {{$message}} </div>
                     @enderror

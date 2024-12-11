@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Http\Requests\StoreTodoRequest;
 use App\Http\Requests\UpdateTodoRequest;
@@ -12,7 +11,7 @@ class TasksController extends Controller
     //
     public function tasks()
     {
-        $tasks = Todoapp::all();
+        $tasks = auth()->user()->todoapps;
         return view('tasks.tasks', ['tasks' => $tasks]);
     }
     public function createform()
@@ -20,24 +19,28 @@ class TasksController extends Controller
         return view('tasks.create');
     }
     public function createtask(StoreTodoRequest $request)
-    {
-        try {
-            $validatedRequest = $request->validated();
-            $validatedRequest['tasks'] = $validatedRequest['taskname'];
-            unset($validatedRequest['taskname']);
+{
+    try {
+        $validatedRequest = $request->validated();
+        $validatedRequest['tasks'] = $validatedRequest['taskname'];
+        unset($validatedRequest['taskname']);
 
-            // Handle file upload if a photo was provided
-            if ($request->hasFile('photo')) {
-                $path = $request->file('photo')->store('task-photos', 'public');
-                $validatedRequest['photo'] = $path;
-            }
-
-            Todoapp::create($validatedRequest);
-            return redirect()->route('user.tasks')->with('success', 'Task created successfully');
-        } catch (\Exception $e) {
-            dd($e->getMessage());
+        // Handle file upload if a photo was provided
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('task-photos', 'public');
+            $validatedRequest['photo'] = $path;
         }
+
+        // Use the authenticated user to create the task
+        $user = auth()->user(); // Get the currently authenticated user
+        $user->todoapps()->create($validatedRequest);
+
+        return redirect()->route('user.tasks')->with('success', 'Task created successfully');
+    } catch (\Exception $e) {
+        dd($e->getMessage());
     }
+}
+
 
     public function edittaskform(Request $request)
     {
@@ -54,16 +57,16 @@ class TasksController extends Controller
     {
         $validatedRequest = $request->validated();
         $id = $validatedRequest['id'];
-       function deletePhoto($filePath){
+        function deletePhoto($filePath){
         if (Storage::disk('public')->exists($filePath)) {
             Storage::disk('public')->delete($filePath);
             return true;
         }
-
         return false;
        }
         // unset($validatedRequest['taskname']);
-        $task = Todoapp::find($id);
+        $task = auth()->user()->todoapps()->find($id);
+        // $task = Todoapp::find($id);
         $task->tasks = $validatedRequest['taskname'];
         $task->description = $validatedRequest['description'];
         $task->completed =  $validatedRequest['completed'];

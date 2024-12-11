@@ -26,7 +26,7 @@ class UpdateTodoRequest extends FormRequest
             'description' => 'string|required|max:1000',
             'completed' => 'boolean|required',
             'photo' => 'image|mimes:png,jpg,jpeg|max:2048|nullable',
-            'id' => ''
+            'id' => ''            
         ];
     }
 }
