@@ -20,9 +20,6 @@
 
             </div>
         </div>
-
-
-
         <script>
             @auth
             const username = "{{ Auth::user()->username }}";
@@ -32,7 +29,6 @@
             @endguest
             const words = ["Hello, " + username, "Welcome to my Todo!", 
             "Add a Task And Believe you can achieve It!.",
-            "",
             ];
             let i = 0;
             let j = 0;
