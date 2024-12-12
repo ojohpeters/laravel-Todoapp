@@ -28,5 +28,3 @@ Route::middleware('auth')->group(function () {
     Route::post('/search', [TasksController::class, 'searchtask'])->name('searchtask');
 });
 
-
-

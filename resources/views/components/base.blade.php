@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <link rel="icon" href="{{ asset('assets/img/favicon.ico') }}" type="image/x-icon">
 
-    
-
 </head>
 
 <body>
@@ -107,7 +105,12 @@
                 </div>
             </div>
         </nav>
-        
+        @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+       
 
     </div>
     <div class="container">
