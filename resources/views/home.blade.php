@@ -27,10 +27,10 @@
             </div>
           </div>
         </div>
-      
+           @auth
         <!-- Motivation Card -->
         <div class="bg-white shadow-xl shadow-slate-900 mt-5 overflow-hidden sm:rounded-md sm:max-w-md mx-auto mb-3 transform rounded-xl h-auto w-full transition duration-300 hover:scale-105 justify-center">
-          @auth
+     
           <div class="justify-center md:flex md:flex-row md:space-x-5 px-6 sm:px-8">
             <div class="block items-center justify-center">
               <h3 class="text-center text-lg leading-6 font-medium text-gray-900">
